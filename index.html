@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!--------------- to print from plane html------------------ -->
+    <!-- <div id="root">hello from html</div> -->
+
+    <!-- -----------------to print from plane js-------------------- -->
+    <!-- <div id="root"></div>
+
+    <script>
+      const heading = document.createElement("h1");
+      heading.innerHTML = "hello from javascript";
+      const root = document.getElementById("root");
+      root.appendChild(heading);
+    </script> -->
+
+    <!-- ------------------to insert react in plane app old way by pasting cdn react & react-dom links------------- -->
+    <div id="root"></div>
+
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+
+    <!-- ---------------same thing what we did above from html & js :doing this tym with react------------- -->
+    <!-- <script>
+      const heading = React.createElement("h1", {}, "hello from REACT");
+      const root = ReactDOM.createRoot(document.getElementById("root"));
+      root.render(heading);
+    </script> -->
+
+    <script src="./App.js"></script>
+    <!--its always put just before body closing tag-->
+  </body>
+</html>
