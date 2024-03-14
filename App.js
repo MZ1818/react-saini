@@ -1,10 +1,14 @@
 //the 1st intake is the element(tags), 2nd intake takes the attributes(any num of attributes can be passed), 3rd intake is what we want to pass/print/child
 //the 2nd & 3rd intake are props
 //this heading i.e createElement will return an JS Object.
+
+import React from "react";
+import ReactDOM from "react-dom/client";
+
 const heading = React.createElement(
   "h1",
   { id: "heading", xyz: "abc" },
-  "hello from REACT"
+  "hello from REACT update automattically by parcel"
 );
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(heading);

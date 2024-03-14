@@ -19,17 +19,18 @@
       root.appendChild(heading);
     </script> -->
 
-    <!-- ------------------to insert react in plane app old way by pasting cdn react & react-dom links------------- -->
+    <!-- -------to insert react in plane app old way by pasting cdn react & react-dom links----not preffered--------- -->
     <div id="root"></div>
 
-    <script
+    <!-- after npm i react & npm i react-dom we no lomger need these methods -->
+    <!-- <script
       crossorigin
       src="https://unpkg.com/react@18/umd/react.development.js"
     ></script>
     <script
       crossorigin
       src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
-    ></script>
+    ></script> -->
 
     <!-- ---------------same thing what we did above from html & js :doing this tym with react------------- -->
     <!-- <script>
@@ -38,7 +39,7 @@
       root.render(heading);
     </script> -->
 
-    <script src="./App.js"></script>
+    <script type="module" src="./App.js"></script>
     <!--its always put just before body closing tag-->
   </body>
 </html>
