@@ -3,6 +3,7 @@ import RestaurantCard from "./RestaurantCard";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Body = () => {
   //state variable(super powerfull variable) is created using 'useState' Hook
@@ -13,6 +14,9 @@ const Body = () => {
   //created this state variable bcz if we will filter our search result, then for next tym of searching we will not
   //get entire list of restaurants. Thats why used this "setFilteredRest" in search onClick(). So that entire
   //list of restaurants will still be their inside "setListOfRestaurants"
+
+  //custom hook
+  const onlineStatus = useOnlineStatus();
 
   //making an API call after rendering the componemt Body
   useEffect(() => {
@@ -39,6 +43,10 @@ const Body = () => {
   // if (listOfRestaurants?.length === 0) {
   //   return <Shimmer />;
   // }
+
+  if (onlineStatus === false) {
+    return <h1>Oh No! Seems like u are offline!</h1>;
+  }
 
   return listOfRestaurants.length === 0 ? (
     <Shimmer />
