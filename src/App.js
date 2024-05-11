@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
@@ -8,17 +8,34 @@ import Contact from "./components/Contact";
 import About from "./components/About";
 import RestaurantMenu from "./components/RestaurantMenu";
 // import Grocerry from "./components/Grocerry";
+import UserContext from "./utils/UserContext";
 
 //lazy loading
 const Grocerry = lazy(() => import("./components/Grocerry"));
 
 const AppLayouut = () => {
+  const [userName, setUserName] = useState();
+
+  //forming an example for authentication (getting name as output)
+  useEffect(() => {
+    const data = {
+      name: "Mufazzal",
+    };
+    setUserName(data.name);
+  }, []);
+
   return (
-    <div className="app">
-      <Header />
-      {/* <Body /> */}
-      <Outlet />
-    </div>
+    //over riding previous default value by wrapping under UserContext.Provider
+    <UserContext.Provider value={{ loggedInUser: userName, setUserName }}>
+      <div className="app">
+        {/* we can separately over ride the value of any component by wrapping it separately also */}
+        {/* <UserContext.Provider value={{ loggedInUser: "Elon Musk" }}> */}
+        <Header />
+        {/* </UserContext.Provider> */}
+        {/* <Body /> */}
+        <Outlet />
+      </div>
+    </UserContext.Provider>
   );
 };
 
