@@ -20,7 +20,7 @@ const RestaurantCategory = ({ data, showItems, setShowIndex }) => {
         <span>🔽</span>
       </div>
       {/* Accordion body */}
-      {showItems && <ItemList item={data?.itemCards} />}
+      {showItems && <ItemList items={data?.itemCards} />}
     </div>
   );
 };

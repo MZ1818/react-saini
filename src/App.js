@@ -9,6 +9,9 @@ import About from "./components/About";
 import RestaurantMenu from "./components/RestaurantMenu";
 // import Grocerry from "./components/Grocerry";
 import UserContext from "./utils/UserContext";
+import { Provider } from "react-redux";
+import appStore from "./utils/appStore";
+import Cart from "./components/Cart";
 
 //lazy loading
 const Grocerry = lazy(() => import("./components/Grocerry"));
@@ -25,17 +28,21 @@ const AppLayouut = () => {
   }, []);
 
   return (
-    //over riding previous default value by wrapping under UserContext.Provider
-    <UserContext.Provider value={{ loggedInUser: userName, setUserName }}>
-      <div className="app">
-        {/* we can separately over ride the value of any component by wrapping it separately also */}
-        {/* <UserContext.Provider value={{ loggedInUser: "Elon Musk" }}> */}
-        <Header />
-        {/* </UserContext.Provider> */}
-        {/* <Body /> */}
-        <Outlet />
-      </div>
-    </UserContext.Provider>
+    //binding store to App
+    <Provider store={appStore}>
+      {/* //over riding previous default value by wrapping under  UserContext.Provider */}
+
+      <UserContext.Provider value={{ loggedInUser: userName, setUserName }}>
+        <div className="app">
+          {/* we can separately over ride the value of any component by wrapping it separately also */}
+          {/* <UserContext.Provider value={{ loggedInUser: "Elon Musk" }}> */}
+          <Header />
+          {/* </UserContext.Provider> */}
+          {/* <Body /> */}
+          <Outlet />
+        </div>
+      </UserContext.Provider>
+    </Provider>
   );
 };
 
@@ -86,6 +93,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/restaurants/:resId",
         element: <RestaurantMenu />, //dynamic rendering part
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
       },
     ],
   },
