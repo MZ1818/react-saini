@@ -6,7 +6,7 @@ import { addItems } from "../utils/cartSlice";
 const ItemList = ({ items }) => {
   const dispatch = useDispatch();
 
-  handleAdd = (item) => {
+  const handleAdd = (item) => {
     //dispatching an action "addItems" that is invoking its reducer that is putting things inside " " in action.payload
     dispatch(addItems(item));
   };
@@ -17,6 +17,7 @@ const ItemList = ({ items }) => {
     <div>
       {items.map((item) => (
         <div
+          data-testid="itemsList"
           key={item?.card?.info?.id}
           className="text-left pb-4 pt-2 border-b-2 p-3 flex justify-between"
         >
